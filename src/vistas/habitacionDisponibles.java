@@ -28,7 +28,7 @@ public class habitacionDisponibles extends javax.swing.JPanel {
 
     public habitacionDisponibles() {
         initComponents();
-        consultar();
+        consultar("disponible");
         DiseñoTablas t = new DiseñoTablas();
         t.AspectoContenido(TablaHabitaciones);
         t.AspectoEncabezados(TablaHabitaciones);
@@ -38,7 +38,7 @@ public class habitacionDisponibles extends javax.swing.JPanel {
         t.AlinearColumna(3, TablaHabitaciones);
     }
 
-    private void consultar() {
+    private void consultar(String estadoPredeterminado) {
         String sql = "select * from habitaciones";
         try {
             conet = con1.conexion();
@@ -49,7 +49,7 @@ public class habitacionDisponibles extends javax.swing.JPanel {
             String estado;
             while (rs.next()) {
                 estado = rs.getString("estado");
-                if (estado.equalsIgnoreCase("Disponible")) {
+                if (estado.equalsIgnoreCase(estadoPredeterminado)) {
                     cliente[0] = rs.getInt("id");
                     cliente[1] = rs.getString("numero");
                     cliente[2] = rs.getString("piso");
@@ -74,6 +74,10 @@ public class habitacionDisponibles extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaHabitaciones = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
+        btnMantenimiento = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        btnDisponible1 = new javax.swing.JButton();
+        btnOcupado = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -112,12 +116,50 @@ public class habitacionDisponibles extends javax.swing.JPanel {
             TablaHabitaciones.getColumnModel().getColumn(7).setPreferredWidth(250);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 990, 430));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 990, 370));
 
-        jLabel8.setFont(new java.awt.Font("Baskerville Old Face", 0, 48)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Baskerville Old Face", 0, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("HABITACIONES DISPONIBLES");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, -1, -1));
+        jLabel8.setText("Seleccione el estado de la habitacion");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+
+        btnMantenimiento.setFont(new java.awt.Font("Agency FB", 1, 20)); // NOI18N
+        btnMantenimiento.setText("MANTENIMIENTO");
+        btnMantenimiento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMantenimiento.setFocusPainted(false);
+        btnMantenimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMantenimientoActionPerformed(evt);
+            }
+        });
+        add(btnMantenimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 150, 140, 40));
+
+        jLabel9.setFont(new java.awt.Font("Baskerville Old Face", 0, 48)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("CONSULTA DE HABITACIONES");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, -1, -1));
+
+        btnDisponible1.setFont(new java.awt.Font("Agency FB", 1, 20)); // NOI18N
+        btnDisponible1.setText("DISPONIBLE");
+        btnDisponible1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDisponible1.setFocusPainted(false);
+        btnDisponible1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDisponible1ActionPerformed(evt);
+            }
+        });
+        add(btnDisponible1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 130, 40));
+
+        btnOcupado.setFont(new java.awt.Font("Agency FB", 1, 20)); // NOI18N
+        btnOcupado.setText("OCUPADO");
+        btnOcupado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnOcupado.setFocusPainted(false);
+        btnOcupado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOcupadoActionPerformed(evt);
+            }
+        });
+        add(btnOcupado, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 150, 130, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void TablaHabitacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaHabitacionesMouseClicked
@@ -125,10 +167,35 @@ public class habitacionDisponibles extends javax.swing.JPanel {
 
     }//GEN-LAST:event_TablaHabitacionesMouseClicked
 
+    private void btnMantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMantenimientoActionPerformed
+        modelo.setRowCount(0);
+        TablaHabitaciones.revalidate();
+        TablaHabitaciones.repaint();
+        consultar("mantenimiento");
+    }//GEN-LAST:event_btnMantenimientoActionPerformed
+
+    private void btnDisponible1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisponible1ActionPerformed
+        modelo.setRowCount(0);
+        TablaHabitaciones.revalidate();
+        TablaHabitaciones.repaint();
+        consultar("disponible");
+    }//GEN-LAST:event_btnDisponible1ActionPerformed
+
+    private void btnOcupadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOcupadoActionPerformed
+        modelo.setRowCount(0);
+        TablaHabitaciones.revalidate();
+        TablaHabitaciones.repaint();
+        consultar("ocupado");
+    }//GEN-LAST:event_btnOcupadoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaHabitaciones;
+    private javax.swing.JButton btnDisponible1;
+    private javax.swing.JButton btnMantenimiento;
+    private javax.swing.JButton btnOcupado;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

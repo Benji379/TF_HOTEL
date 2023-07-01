@@ -48,7 +48,7 @@ public class logica {
                 }
             }
             if (existe == 0) {
-                System.out.println("CLIENTE NO EXISTE");
+//                System.out.println("CLIENTE NO EXISTE");
             }
 
         } catch (HeadlessException | SQLException e) {

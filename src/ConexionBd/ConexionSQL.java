@@ -19,9 +19,9 @@ public class ConexionSQL {
         }
         try {
             //usar la bd localmente
-            conectar = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/tf_hotel", "root", "");
+            conectar = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tf_hotel", "root", "");
             //usar la bd dentro de un MySQLHost (inactivo)
-//            conectar = (Connection) DriverManager.getConnection("jdbc:mysql://admin/boyzeosthxmnb6wpbikw", "u6ircgzlzmholzfg", "XytuZwo053UIRvPUqSCd");
+            //conectar = (Connection) DriverManager.getConnection("jdbc:mysql://admin/boyzeosthxmnb6wpbikw", "u6ircgzlzmholzfg", "XytuZwo053UIRvPUqSCd");
             
         } catch (SQLException ex) {
             Logger.getLogger(ConexionSQL.class.getName()).log(Level.SEVERE, null, ex);
