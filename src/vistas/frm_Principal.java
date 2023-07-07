@@ -1,4 +1,4 @@
-    package vistas;
+package vistas;
 
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
@@ -8,7 +8,6 @@ import metodosDAO.logica;
  *
  * @author Martin
  */
-
 public final class frm_Principal extends javax.swing.JFrame {
 
     public frm_Principal() {
@@ -216,7 +215,7 @@ public final class frm_Principal extends javax.swing.JFrame {
         String nombre = frm_Login.NOMBRE;
         String apellido = frm_Login.APELLIDO;
         String correo = frm_Login.CORREO;
-        
+
         pnl_principal.txtNombre.setText(nombre);
         pnl_principal.txtApellido.setText(apellido);
         pnl_principal.txtCorreo.setText(correo);
@@ -235,7 +234,7 @@ public final class frm_Principal extends javax.swing.JFrame {
 
     private void moduloReservasYConsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moduloReservasYConsumosActionPerformed
         pnl_ReservasYConsumos p = new pnl_ReservasYConsumos();
-        
+
         p.setSize(1200, 620);
         p.setLocation(0, 0);
         contenedor.removeAll();

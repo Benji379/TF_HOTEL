@@ -78,5 +78,4 @@ public class logica {
             System.out.println("ERROR: " + e.getMessage());
         }
     }
-
 }
