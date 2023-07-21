@@ -98,6 +98,7 @@ public class pnl_ReservasYConsumos extends javax.swing.JPanel {
         jLabel19 = new javax.swing.JLabel();
         jSeparator10 = new javax.swing.JSeparator();
         txtApellido = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -318,6 +319,18 @@ public class pnl_ReservasYConsumos extends javax.swing.JPanel {
         txtApellido.setForeground(new java.awt.Color(255, 255, 255));
         txtApellido.setBorder(null);
         add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 170, 20));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/btnConsulta.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 50, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -493,6 +506,14 @@ public class pnl_ReservasYConsumos extends javax.swing.JPanel {
 
     }//GEN-LAST:event_txtNumeroHabitacionKeyTyped
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        logica g = new logica();
+        String piso = g.mostrarDatos("habitaciones", "numero", txtNumeroHabitacion.getText(), "piso");
+        txtPiso.setText(piso);
+        String disponible = g.mostrarDatos("habitaciones", "numero", txtNumeroHabitacion.getText(), "estado");
+        JOptionPane.showMessageDialog(null, "Estado de la habitacion: " + disponible);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     void Agregar() {
         Date fechaActual = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
@@ -537,6 +558,7 @@ public class pnl_ReservasYConsumos extends javax.swing.JPanel {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
