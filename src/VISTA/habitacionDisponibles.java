@@ -5,11 +5,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.table.DefaultTableModel;
 import FORMATOS.DiseñoTablas;
-import DAO.filtrarDatos;
 
 /**
  *
@@ -76,8 +73,6 @@ public class habitacionDisponibles extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         btnDisponible1 = new javax.swing.JButton();
         btnOcupado = new javax.swing.JButton();
-        txtFiltrarTipo = new javax.swing.JTextField();
-        txtFiltrarEstado = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -160,20 +155,6 @@ public class habitacionDisponibles extends javax.swing.JPanel {
             }
         });
         add(btnOcupado, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 150, 130, 40));
-
-        txtFiltrarTipo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtFiltrarTipoKeyTyped(evt);
-            }
-        });
-        add(txtFiltrarTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 140, 120, 30));
-
-        txtFiltrarEstado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtFiltrarEstadoKeyTyped(evt);
-            }
-        });
-        add(txtFiltrarEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 90, 120, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void TablaHabitacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaHabitacionesMouseClicked
@@ -201,21 +182,7 @@ public class habitacionDisponibles extends javax.swing.JPanel {
         consultar("ocupado");
     }//GEN-LAST:event_btnOcupadoActionPerformed
 
-    private Map<String, String> obtenerColumnFilters() {
-        Map<String, String> columnFilters = new HashMap<>();
-        columnFilters.put("estado", txtFiltrarEstado.getText());
-        columnFilters.put("tipo_habitacion", txtFiltrarTipo.getText());
-        return columnFilters;
-    }
     
-    private void txtFiltrarEstadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltrarEstadoKeyTyped
-        filtrarDatos.filterAndPopulateTable("habitaciones", TablaHabitaciones, obtenerColumnFilters());
-    }//GEN-LAST:event_txtFiltrarEstadoKeyTyped
-
-    private void txtFiltrarTipoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltrarTipoKeyTyped
-        filtrarDatos.filterAndPopulateTable("habitaciones", TablaHabitaciones, obtenerColumnFilters());
-    }//GEN-LAST:event_txtFiltrarTipoKeyTyped
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaHabitaciones;
@@ -225,7 +192,5 @@ public class habitacionDisponibles extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtFiltrarEstado;
-    private javax.swing.JTextField txtFiltrarTipo;
     // End of variables declaration//GEN-END:variables
 }

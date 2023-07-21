@@ -11,17 +11,17 @@ import DAO.ConexionSQL;
 import java.sql.Connection;
 import DAO.logica;
 import FORMATOS.formato;
+import VISTA_EMPLEADO.frm_Principal_EMPLEADO;
 
 /**
  *
  * @author Martin
  */
-
 public class frm_Login extends javax.swing.JFrame {
 
     ConexionSQL cc = new ConexionSQL();
     Connection con = cc.conexion();
-    
+
     public frm_Login() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -125,10 +125,18 @@ public class frm_Login extends javax.swing.JFrame {
                         if (rsC.next()) {
                             result = 1;
                             if (result == 1) {
-                                frm_Principal abrir = new frm_Principal();
-                                abrir.setVisible(true);
-                                this.hide();
-                                mandarDatosPantallaInicio();
+                                if (txtUsuario.getText().equalsIgnoreCase("Admin")) {
+                                    frm_Principal abrir = new frm_Principal();
+                                    abrir.setVisible(true);
+                                    this.hide();
+                                    mandarDatosPantallaInicio();
+                                } else {
+                                    frm_Principal_EMPLEADO abrir = new frm_Principal_EMPLEADO();
+                                    abrir.setVisible(true);
+                                    this.hide();
+                                    mandarDatosPantallaInicio();
+                                }
+
                             }
                         } else {
                             JOptionPane.showMessageDialog(null, "Contraseña Incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
@@ -152,7 +160,7 @@ public class frm_Login extends javax.swing.JFrame {
     /*DECLARO MIS VARIABLES DE FORMA STATICA, PARA PODER TENER ACCESO A MIS VARIABLES
     DESDE OTRA VENTANA
      */
-    static String NOMBRE, APELLIDO, CORREO;
+    public static String NOMBRE, APELLIDO, CORREO;
 
     public void mandarDatosPantallaInicio() {
 
