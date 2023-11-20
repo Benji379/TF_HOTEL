@@ -15,7 +15,6 @@ import FORMATOS.formato;
  *
  * @author Martin
  */
-
 public class pnl_Habitaciones extends javax.swing.JPanel {
 
     ConexionSQL con1 = new ConexionSQL();
@@ -372,7 +371,7 @@ public class pnl_Habitaciones extends javax.swing.JPanel {
 
     private void TablaHabitacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaHabitacionesMouseClicked
         int fila = TablaHabitaciones.getSelectedRow();
-
+        
         if (fila == -1) {
             JOptionPane.showMessageDialog(null, "Selecciona una fila");
         } else {
